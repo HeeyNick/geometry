@@ -1,26 +1,29 @@
-all: bin/circles_app bin/testss
-	./bin/testss
+C = gcc
 
-bin/testss: build/props.o build/scan.o build/main_test.o build/function_test.o
-	gcc -Wall -Werror build/main_test.o build/props.o build/scan.o build/function_test.o -o bin/testss -lm
+all: bin/ready_file bin/test_file
+	./bin/ready_file
+	./bin/test_file
+
+bin/test_file: build/operation.o build/readfile.o build/main_test.o build/function_test.o
+	$(C) -Wall -Werror build/main_test.o build/operation.o build/readfile.o build/function_test.o -o bin/test_file -lm
 
 build/main_test.o: test/main.c
-	gcc -Wall -Werror -I thirdparty -I src -c test/main.c -o build/main_test.o 
+	$(C)  -Wall -Werror -I thirdparty -I src -c test/main.c -o build/main_test.o 
 
 build/function_test.o: test/function_test.c
-	gcc -Wall -Werror -I thirdparty -I src -c test/function_test.c -o build/function_test.o
+	$(C)  -Wall -Werror -I thirdparty -I src -c test/function_test.c -o build/function_test.o
 
-bin/circles_app: build/main.o build/props.o build/scan.o
-	gcc -Wall -Werror build/main.o build/props.o build/scan.o -o bin/circles_app -lm
+bin/ready_file: build/main.o build/operation.o build/readfile.o
+	$(C)  -Wall -Werror build/main.o build/operation.o build/readfile.o -o bin/ready_file -lm
 
-build/props.o: src/props.c
-	gcc -Wall -Werror -c src/props.c -o build/props.o 
+build/operation.o: src/operation.c
+	$(C)  -Wall -Werror -c src/operation.c -o build/operation.o 
 
-build/scan.o: src/scan.c
-	gcc -Wall -Werror -c src/scan.c -o build/scan.o 
+build/readfile.o: src/readfile.c
+	$(C)  -Wall -Werror -c src/readfile.c -o build/readfile.o 
 
 build/main.o: src/main.c
-	gcc -Wall -Werror -c src/main.c -o build/main.o 
+	$(C)  -Wall -Werror -c src/main.c -o build/main.o 
 clean:
 	rm -rf build/*.o bin/circles_app
 

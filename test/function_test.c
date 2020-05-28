@@ -26,3 +26,11 @@ CTEST(perimeter, test_1)
     double result = perimeter(circle, 1);
     ASSERT_DBL_NEAR_TOL(expect, result, 1);
 }
+
+CTEST(area, test_1)
+{
+    create_circle(circle, 1, 1, 2, 2);
+    double expect = 4 * M_PI;
+    double result = area(circle, 1);
+    ASSERT_DBL_NEAR_TOL(expect, result, 1);
+}

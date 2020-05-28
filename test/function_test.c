@@ -51,3 +51,38 @@ CTEST(crossing, not_crossed_figures)
     int result = crossing(circle, 1, 2);
     ASSERT_EQUAL(expect, result);
 }
+CTEST(parse_coord, correct_x)
+{
+    char* line = "circle (1 2, 3)\n";
+    size_t expect = 0;
+    size_t i = 8;
+    size_t result = parse_coord(&i, &circle[0].x, line);
+    ASSERT_EQUAL(expect, result);
+}
+
+CTEST(parse_coord, incorrect_x)
+{
+    char* line = "circle (a 2, 3)\n";
+    size_t expect = 1;
+    size_t i = 8;
+    size_t result = parse_coord(&i, &circle[0].x, line);
+    ASSERT_EQUAL(expect, result);
+}
+
+CTEST(parse_coord, correct_y)
+{
+    char* line = "circle (1 2, 3)\n";
+    size_t expect = 0;
+    size_t i = 10;
+    size_t result = parse_coord(&i, &circle[0].x, line);
+    ASSERT_EQUAL(expect, result);
+}
+
+CTEST(parse_coord, incorrect_y)
+{
+    char* line = "circle (1 b, 3)\n";
+    size_t expect = 1;
+    size_t i = 10;
+    size_t result = parse_coord(&i, &circle[0].x, line);
+    ASSERT_EQUAL(expect, result);
+}

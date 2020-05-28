@@ -1,4 +1,4 @@
-#include "scan.h"
+#include "readfile.h"
 #include <ctype.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -12,7 +12,7 @@ void skip_char(size_t* i, char* line, size_t symb)
     }
 }
 
-size_t parse_coord(size_t* i, int* coord, char* line)
+int parse_coord(size_t* i, int* coord, char* line)
 {
     *coord = atoi(&line[*i]);
     skip_char(i, line, ' ');
@@ -26,7 +26,7 @@ size_t parse_coord(size_t* i, int* coord, char* line)
     return 0;
 }
 
-size_t scan_string(char* line, size_t number, figure* circle)
+int scan_string(char* line, size_t number, figure* circle)
 {
     size_t i = 0;
     while (line[i] != '(') {
@@ -64,9 +64,9 @@ size_t scan_string(char* line, size_t number, figure* circle)
     return 1;
 }
 
-size_t scan(char* str, figure* circle)
+size_t read_file(char *fil, figure* circle)
 {
-    FILE* file = fopen(str, "r");
+    FILE* file = fopen(fil, "r");
     if (!file) {
         return 0;
     }

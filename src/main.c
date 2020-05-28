@@ -1,29 +1,27 @@
-#include "props.h"
 #include <stdio.h>
-#define N 1000
+#include <math.h>
+#include <stdlib.h>
+#include "operation.h"
 
-figure circle[N];
-
-int main(int argc, char** argv)
+figure circle[100];
+int main()
 {
-    if (argc != 2) {
-        printf("Incorrect arguments\n");
-        return 0;
-    }
-    size_t number = scan(argv[1], circle);
+    size_t number = read_file("figures.txt", circle);
     if (number == 0) {
         printf("Invalid data\n");
         return 0;
     }
-    for (int i = 0; i < number; i++) {
-        printf("%d. circle (%d %d, %.1lf)\n",
+    for (int i = 0; i < number; i++)
+    {
+        printf("%d. circle (%d, %d , %d)\n",
                i + 1,
                circle[i].x,
                circle[i].y,
                circle[i].r);
-        printf("\tperimeter = %.3lf\n", perimeter(circle, i));
-        printf("\tarea = %.3lf\n", area(circle, i));
+        printf("\tperimeter = %.3lf\n", perim_of_circle(circle, i));
+        printf("\tarea = %.3lf\n", aria_of_circle(circle, i));
         crossing_check(circle, i, number);
     }
     return 0;
+
 }

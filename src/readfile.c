@@ -64,7 +64,7 @@ int scan_string(char* line, size_t number, figure* circle)
     return 1;
 }
 
-size_t read_file(char *fil, figure* circle)
+size_t read_file(char* fil, figure* circle)
 {
     FILE* file = fopen(fil, "r");
     if (!file) {

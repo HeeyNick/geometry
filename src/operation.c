@@ -1,23 +1,25 @@
-#include <stdio.h>
-#include <math.h>
 #include "readfile.h"
+#include <math.h>
+#include <stdio.h>
 
-double perim_of_circle(figure* circle, int i )
+double perim_of_circle(figure* circle, int i)
 {
     double pi = 3.14159265358979323846;
-    double perim = 2 * pi *  circle[i].r;
+    double perim = 2 * pi * circle[i].r;
     return (perim);
 }
 double aria_of_circle(figure* circle, int i)
 {
     double pi = 3.14159265358979323846;
     double aria = (pi * circle[i].r * circle[i].r);
-    return ( aria);
+    return (aria);
 }
 
 int crossing(figure* circle, size_t n, int i)
 {
-    if ((sqrt(pow(circle[n].x - circle[i].x, 2) + pow(circle[n].y - circle[i].y, 2))) <= (circle[n].r + circle[i].r)) {
+    if ((sqrt(pow(circle[n].x - circle[i].x, 2)
+              + pow(circle[n].y - circle[i].y, 2)))
+        <= (circle[n].r + circle[i].r)) {
         return 1;
     }
     return 0;
@@ -38,4 +40,3 @@ void crossing_check(figure* circle, size_t n, size_t number)
         }
     }
 }
-

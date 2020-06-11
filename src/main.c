@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
 #include "operation.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 figure circle[100];
 int main()
@@ -11,8 +11,7 @@ int main()
         printf("Invalid data\n");
         return 0;
     }
-    for (int i = 0; i < number; i++)
-    {
+    for (int i = 0; i < number; i++) {
         printf("%d. circle (%d, %d , %d)\n",
                i + 1,
                circle[i].x,
@@ -23,5 +22,4 @@ int main()
         crossing_check(circle, i, number);
     }
     return 0;
-
 }
